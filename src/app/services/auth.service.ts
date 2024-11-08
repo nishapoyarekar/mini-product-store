@@ -26,9 +26,8 @@ export class AuthService {
 
   logout() {
     console.log('Logout called');
-    //this.isLoggedIn.next(false);
     this.isLoggedIn$.pipe(take(1)).subscribe(isLoggedIn => {
-      if (true) {
+      if (isLoggedIn) {
         
         console.log('User is  logged in');
         this.isLoggedIn.next(false);
