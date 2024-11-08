@@ -8,6 +8,7 @@
             <h5 class="card-title">{{ product.title }}</h5>
             <p class="card-text">{{ product.description }}</p>
             <p><strong>Price:</strong> ${{ product.price }}</p>
+            <p><button (click)="addToCart(product)">Add to Cart</button></p>
           </div>
         </div>
       </div>

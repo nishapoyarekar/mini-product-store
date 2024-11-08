@@ -3,3 +3,5 @@
 <h2>{{ item.title }}</h2>
 <button (click)="removeFromCart(item.id)">Remove</button>
 </div>
+<p>Total: {{ total | currency }}</p>
+<button (click)="clearCart()">Clear Cart</button>

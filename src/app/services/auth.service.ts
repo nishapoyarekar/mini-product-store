@@ -16,7 +16,7 @@ export class AuthService {
     console.log('Login called');
     this.isLoggedIn$.pipe(take(1)).subscribe(isLoggedIn => {
       if (!isLoggedIn) {
-        // Perform any action for logged-out state without triggering endless calls
+        
         console.log('User is not logged in');
         this.isLoggedIn.next(true);
       }
@@ -26,10 +26,11 @@ export class AuthService {
 
   logout() {
     console.log('Logout called');
+    //this.isLoggedIn.next(false);
     this.isLoggedIn$.pipe(take(1)).subscribe(isLoggedIn => {
-      if (isLoggedIn) {
-        // Perform any action for logged-in state without triggering endless calls
-        console.log('User is logged in');
+      if (true) {
+        
+        console.log('User is  logged in');
         this.isLoggedIn.next(false);
       }
     });
