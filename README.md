@@ -37,7 +37,7 @@ The Dashboard page is for logged-in users only, showing user data from the API.
 
 
 
-/src/app/services/: Our services for products and authentication.
+/src/app/services/: services for products and authentication.
 
 
 
