@@ -1,37 +1,25 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
-import { take } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedIn = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedIn.asObservable();
-
-
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false); // Default is logged out
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   login() {
-    console.log('Login called');
-    this.isLoggedIn$.pipe(take(1)).subscribe(isLoggedIn => {
-      if (!isLoggedIn) {
-        
-        console.log('User is not logged in');
-        this.isLoggedIn.next(true);
-      }
-    });
-    
+    console.log("Logging in...");
+    this.isLoggedInSubject.next(true);
   }
 
   logout() {
-    console.log('Logout called');
-    this.isLoggedIn$.pipe(take(1)).subscribe(isLoggedIn => {
-      if (isLoggedIn) {
-        
-        console.log('User is  logged in');
-        this.isLoggedIn.next(false);
-      }
-    });
+    console.log("Logging out...");
+    this.isLoggedInSubject.next(false);
+  }
+
+  // Helper to get the current value of login status
+  getIsLoggedIn(): boolean {
+    return this.isLoggedInSubject.value;
   }
 }

@@ -20,19 +20,17 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/cart">Cart</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn$ | async">
+      <li class="nav-item" *ngIf="isLoggedIn">
         <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn$ | async">
+      <li class="nav-item" *ngIf="isLoggedIn">
         <a class="nav-link" routerLink="/add-product">Add Product</a>
       </li>
     </ul>
-    <button
-      class="btn btn-outline-primary my-2 my-sm-0"
-      (click)="toggleLogin()"
-    >
-      {{ (isLoggedIn$ | async) ? 'Logout' : 'Login' }}
-    </button>
+    
+
+    <button class="btn btn-outline-primary my-2 my-sm-0" *ngIf="!isLoggedIn" (click)="login()">Login</button>
+    <button class="btn btn-outline-primary my-2 my-sm-0" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
   </div>
 </nav>
 
